@@ -24,6 +24,7 @@ COPY pnpm-workspace.yaml ./
 
 # Installation des dépendances avec patch
 RUN pnpm install --no-frozen-lockfile && \
+    pnpm patch @solana-developers/helpers && \
     pnpm patch-commit
 
 # Copie du reste des fichiers
