@@ -22,8 +22,9 @@ COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
 COPY pnpm-workspace.yaml ./
 
-# Installation des dépendances
-RUN pnpm install --no-frozen-lockfile
+# Installation des dépendances avec patch
+RUN pnpm install --no-frozen-lockfile && \
+    pnpm patch-commit
 
 # Copie du reste des fichiers
 COPY . .
