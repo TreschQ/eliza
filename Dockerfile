@@ -9,7 +9,6 @@ RUN npm install -g pnpm
 # Copier les fichiers de configuration
 COPY package.json pnpm-lock.yaml ./
 COPY characters ./characters
-COPY .env.production ./.env
 
 # Installer les dépendances
 RUN pnpm install --frozen-lockfile
