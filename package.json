@@ -5,14 +5,14 @@
     "lint": "biome lint .",
     "check": "biome check --apply .",
     "preinstall": "npx only-allow pnpm",
-    "build": "turbo run build --filter=!eliza-docs",
+    "build": "tsc",
     "build-docker": "turbo run build",
     "cleanstart": "if [ -f agent/data/db.sqlite ]; then rm agent/data/db.sqlite; fi && pnpm --filter \"@elizaos/agent\" start --isRoot",
     "cleanstart:debug": "if [ -f agent/data/db.sqlite ]; then rm agent/data/db.sqlite; fi && cross-env NODE_ENV=development VERBOSE=true DEFAULT_LOG_LEVEL=debug DEBUG=eliza:* pnpm --filter \"@elizaos/agent\" start --isRoot",
-    "start": "pnpm --filter \"@elizaos/agent\" start --isRoot",
+    "start": "node dist/index.js",
     "start:client": "pnpm --dir client dev",
     "start:debug": "cross-env NODE_ENV=development VERBOSE=true DEFAULT_LOG_LEVEL=debug DEBUG=eliza:* pnpm --filter \"@elizaos/agent\" start --isRoot",
-    "dev": "bash ./scripts/dev.sh",
+    "dev": "ts-node src/index.ts",
     "release": "pnpm build && pnpm format && npx lerna publish --no-private --force-publish",
     "clean": "bash ./scripts/clean.sh",
     "docker:build": "bash ./scripts/docker.sh build",
@@ -65,7 +65,7 @@
     }
   },
   "engines": {
-    "node": "23.3.0"
+    "node": ">=18.0.0 <19.0.0"
   },
   "dependencies": {
     "@0glabs/0g-ts-sdk": "0.2.1",

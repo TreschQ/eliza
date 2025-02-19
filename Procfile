@@ -1,0 +1,1 @@
+web: pnpm start --characters="characters/vrap.character.json" 

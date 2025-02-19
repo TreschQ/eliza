@@ -17,3 +17,7 @@ node_modules
 # Ignore build artifacts from the host
 dist
 build
+
+# Additional ignore patterns
+npm-debug.log
+.env
