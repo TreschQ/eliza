@@ -3,15 +3,15 @@ FROM node:18-slim
 
 WORKDIR /app
 
-# Installer pnpm
-RUN npm install -g pnpm
+# Installer pnpm de manière plus fiable
+RUN npm install -g pnpm@8.15.1
 
-# Copier les fichiers de configuration
-COPY package.json pnpm-lock.yaml ./
-COPY characters ./characters
+# Copier d'abord uniquement les fichiers nécessaires pour l'installation
+COPY package.json ./
+COPY pnpm-lock.yaml ./
 
-# Installer les dépendances
-RUN pnpm install --frozen-lockfile
+# Installer les dépendances avec plus de verbosité
+RUN pnpm install --no-frozen-lockfile
 
 # Copier le reste des fichiers
 COPY . .
