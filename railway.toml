@@ -1,6 +1,7 @@
 [build]
-builder = "dockerfile"
+builder = "nixpacks"
 
 [deploy]
+startCommand = "export selected_character_path='characters/vrap.character.json' && sh scripts/start.sh"
 healthcheckPath = "/"
-restartPolicyType = "on_failure" 
+restartPolicyType = "on_failure"
