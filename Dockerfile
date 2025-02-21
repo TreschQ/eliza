@@ -14,7 +14,6 @@ RUN npm install -g pnpm@9.15.4 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Configuration du répertoire de travail
 WORKDIR /app
 
 # Copie des fichiers nécessaires
@@ -22,10 +21,8 @@ COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
 COPY pnpm-workspace.yaml ./
 
-# Installation des dépendances avec patch
-RUN pnpm install --no-frozen-lockfile && \
-    pnpm patch @solana-developers/helpers && \
-    pnpm patch-commit
+# Installation des dépendances sans patch
+RUN pnpm install --no-frozen-lockfile
 
 # Copie du reste des fichiers
 COPY . .
