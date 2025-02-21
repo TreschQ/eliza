@@ -18,7 +18,6 @@ WORKDIR /app
 
 # Copie des fichiers nécessaires
 COPY package.json pnpm-lock.yaml ./
-COPY patches ./patches
 COPY pnpm-workspace.yaml ./
 
 # Installation des dépendances sans patch
