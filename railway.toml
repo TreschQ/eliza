@@ -2,6 +2,6 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = 'pnpm start --characters="characters/vrap.character.json"'
+startCommand = 'pnpm build &&pnpm start --characters="characters/vrap.character.json"'
 healthcheckPath = "/"
 restartPolicyType = "on_failure"
